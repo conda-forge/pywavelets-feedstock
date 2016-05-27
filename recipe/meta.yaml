@@ -33,5 +33,6 @@ about:
 
 extra:
     recipe-maintainers:
-        - ocefpaf
         - grlee77
+        - jakirkham
+        - ocefpaf
