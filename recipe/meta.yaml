@@ -26,7 +26,7 @@ test:
     requires:
         - nose
     commands:
-        - conda inspect linkages -n _test pywavelets  # [linux]
+        - conda inspect linkages -p ${PREFIX} pywavelets  # [linux]
 
 about:
     home: https://github.com/PyWavelets/pywt
