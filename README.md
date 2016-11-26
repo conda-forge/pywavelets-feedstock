@@ -33,7 +33,6 @@ conda search pywavelets --channel conda-forge
 ```
 
 
-
 About conda-forge
 =================
 
