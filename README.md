@@ -7,7 +7,7 @@ Package license: MIT
 
 Feedstock license: BSD 3-Clause
 
-Summary: Discrete Wavelet Transforms in Python
+Summary: Discrete Wavelet Transforms in Python.
 
 
 
