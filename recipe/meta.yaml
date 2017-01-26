@@ -27,12 +27,13 @@ test:
   requires:
     - nose
   commands:
-    #- conda inspect linkages -p $PREFIX pywavelets  # [not win]
-    #- conda inspect objects -p $PREFIX pywavelets  # [osx]
+    - conda inspect linkages -p $PREFIX pywavelets  # [not win]
+    - conda inspect objects -p $PREFIX pywavelets  # [osx]
 
 about:
   home: https://github.com/PyWavelets/pywt
   license: MIT
+  license_file: COPYING
   summary: 'Discrete Wavelet Transforms in Python.'
 
 extra:
