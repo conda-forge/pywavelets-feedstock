@@ -5,23 +5,24 @@ package:
   version: {{ version }}
 
 source:
-  fn: PyWavelets-{{ version }}.tar.gz
   url: https://github.com/PyWavelets/pywt/archive/v{{ version }}.tar.gz
   sha256: e36d629f40f7781da2dcaa2139bc476e9deaf91d79f675b5ce0bde6e775d1b53
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
   build:
     - python
     - cython
-    - numpy x.x
     - setuptools
+    - numpy 1.8.*  # [not (win and py36)]
+    - numpy 1.11.*  # [win and py36]
   run:
     - python
-    - numpy x.x
+    - numpy >=1.8  # [not (win and py36)]
+    - numpy >=1.11  # [win and py36]
 
 test:
   requires:
