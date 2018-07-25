@@ -10,22 +10,24 @@ source:
   sha256: e36d629f40f7781da2dcaa2139bc476e9deaf91d79f675b5ce0bde6e775d1b53
 
 build:
-  number: 1
+  number: 2
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - python
     - cython
-    - numpy 1.8.*  # [not (win and (py35 or py36))]
-    - numpy 1.9.*  # [win and py35]
-    - numpy 1.11.*  # [win and py36]
+    - numpy        # [not (win and (py35 or py36))]
+    - numpy        # [win and py35]
+    - numpy         # [win and py36]
     - setuptools
   run:
     - python
-    - numpy >=1.8  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
+    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
+    - {{ pin_compatible('numpy') }}   # [win and py35]
+    - {{ pin_compatible('numpy') }}   # [win and py36]
 
 test:
   requires:
