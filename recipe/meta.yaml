@@ -5,36 +5,29 @@ package:
   version: {{ version }}
 
 source:
-  fn: PyWavelets-{{ version }}.tar.gz
   url: https://github.com/PyWavelets/pywt/archive/v{{ version }}.tar.gz
   sha256: e36d629f40f7781da2dcaa2139bc476e9deaf91d79f675b5ce0bde6e775d1b53
 
 build:
   number: 2
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - {{ compiler('c') }}
   host:
     - python
+    - pip
     - cython
-    - numpy        # [not (win and (py35 or py36))]
-    - numpy        # [win and py35]
-    - numpy         # [win and py36]
-    - setuptools
+    - numpy
   run:
     - python
-    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
-    - {{ pin_compatible('numpy') }}   # [win and py35]
-    - {{ pin_compatible('numpy') }}   # [win and py36]
+    - {{ pin_compatible('numpy') }}
 
 test:
-  requires:
-    - nose
   commands:
-    - conda inspect linkages -p $PREFIX pywavelets  # [not win]
-    - conda inspect objects -p $PREFIX pywavelets   # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]
 
 about:
   home: https://github.com/PyWavelets/pywt
