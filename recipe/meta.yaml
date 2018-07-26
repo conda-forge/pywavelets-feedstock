@@ -25,6 +25,8 @@ requirements:
     - {{ pin_compatible('numpy') }}
 
 test:
+  requires:
+    - nose
   commands:
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]
