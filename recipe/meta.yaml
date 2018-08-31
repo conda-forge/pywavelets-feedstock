@@ -34,7 +34,7 @@ test:
 about:
   home: https://github.com/PyWavelets/pywt
   license: MIT
-  license_file: COPYING
+  license_file: LICENSE
   summary: 'Discrete Wavelet Transforms in Python.'
 
 extra:
