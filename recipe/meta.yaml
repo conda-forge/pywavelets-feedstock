@@ -10,7 +10,7 @@ source:
 
 build:
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
   build:
@@ -27,15 +27,14 @@ requirements:
 test:
   requires:
     - nose
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME   # [osx]
+  imports:
+    - pywt
 
 about:
   home: https://github.com/PyWavelets/pywt
   license: MIT
   license_file: LICENSE
-  summary: 'Discrete Wavelet Transforms in Python.'
+  summary: 'Discrete Wavelet Transforms in Python'
 
 extra:
   recipe-maintainers:
