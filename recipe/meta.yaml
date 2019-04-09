@@ -1,4 +1,4 @@
-{% set version = "1.0.2" %}
+{% set version = "1.0.3" %}
 
 package:
   name: pywavelets
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/PyWavelets/pywt/archive/v{{ version }}.tar.gz
-  sha256: 095b1539992230e6ee8a3799ab51793f2d86923bd0fc05c4fd717ae4afc95b71
+  sha256: b152d4b551e3b454217c907e8722f7d8dc0adf104e6b3a8657d07e4020a990f2
 
 build:
   number: 0
