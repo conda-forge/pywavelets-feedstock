@@ -1,15 +1,17 @@
+{% set name = "PyWavelets" %}
 {% set version = "1.0.3" %}
 
 package:
-  name: pywavelets
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/PyWavelets/pywt/archive/v{{ version }}.tar.gz
-  sha256: b152d4b551e3b454217c907e8722f7d8dc0adf104e6b3a8657d07e4020a990f2
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: a12c7a6258c0015d2c75d88b87393ee015494551f049009e8b63eafed2d78efc
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
