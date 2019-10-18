@@ -1,5 +1,5 @@
 {% set name = "PyWavelets" %}
-{% set version = "1.0.3" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a12c7a6258c0015d2c75d88b87393ee015494551f049009e8b63eafed2d78efc
+  sha256: 4eb803963fca170c36de3280881230e248152c6818e1734077b5f21867cabc06
 
 build:
-  number: 1
+  number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  skip: True  # [py2k]
 
 requirements:
   build:
@@ -27,7 +28,7 @@ requirements:
 
 test:
   requires:
-    - nose
+    - pytest
   imports:
     - pywt
 
