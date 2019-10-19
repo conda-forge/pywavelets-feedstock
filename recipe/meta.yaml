@@ -1,5 +1,5 @@
 {% set name = "PyWavelets" %}
-{% set version = "1.1.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4eb803963fca170c36de3280881230e248152c6818e1734077b5f21867cabc06
+  sha256: 1a64b40f6acb4ffbaccce0545d7fc641744f95351f62e4c6aaa40549326008c9
 
 build:
   number: 0
