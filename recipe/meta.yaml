@@ -8,6 +8,9 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 1a64b40f6acb4ffbaccce0545d7fc641744f95351f62e4c6aaa40549326008c9
+  patches:
+    # Patch from PyWavelets/pywt#522 (ensure cython calls np.import_array)
+    - pr522.patch
 
 build:
   number: 1
