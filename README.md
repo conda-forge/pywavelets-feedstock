@@ -327,4 +327,5 @@ Feedstock Maintainers
 * [@grlee77](https://github.com/grlee77/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@ocefpaf](https://github.com/ocefpaf/)
+* [@rgommers](https://github.com/rgommers/)
 
