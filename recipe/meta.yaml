@@ -37,6 +37,10 @@ test:
     - pytest
   imports:
     - pywt
+  commands:
+    {% set label = "'full'" %}
+    {% set tests = "['pywt']" %}
+    - python -c "import sys; import pywt; sys.exit(not pywt.test(verbose=2, label={{ label }}, tests={{ tests }}, extra_argv=['--durations=50']))"
 
 about:
   home: https://github.com/PyWavelets/pywt
