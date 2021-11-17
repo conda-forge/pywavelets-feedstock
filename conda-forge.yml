@@ -1,6 +1,10 @@
+build_platform:
+  linux_ppc64le: linux_ppc64le  # tests fail when emulating power from x86
+  osx_arm64: osx_64  # cross compile due to cloud.drone.io outage
 conda_forge_output_validation: true
 provider:
   linux_aarch64: default
   linux_ppc64le: default
+  osx_arm64: default
   win: azure
 test_on_native_only: true
