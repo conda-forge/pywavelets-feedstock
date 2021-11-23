@@ -10,7 +10,7 @@ source:
   sha256: 6cbd69b047bb4e00873097472133425f5f08a4e6bc8b3f0ae709274d4d5e9a8d
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
@@ -32,6 +32,8 @@ requirements:
 test:
   requires:
     - pytest
+    # Possibly avoid some calls unsupported by QEMU
+    - blas=*=*netlib  # [build_platform != target_platform]
   imports:
     - pywt
   commands:
