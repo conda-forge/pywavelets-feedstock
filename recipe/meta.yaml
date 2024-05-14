@@ -13,31 +13,36 @@ source:
 
 build:
   number: 0
+  skip: True  # [py<39]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython                                 # [build_platform != target_platform]
-    - numpy                                  # [build_platform != target_platform]
+    - cython >=3.0.4,<3.1                    # [build_platform != target_platform]
+    - numpy >=2.0.0rc1,<2.3                  # [build_platform != target_platform]
+    - meson-python >=0.15.0
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
   host:
     - python
     - pip
-    - cython
-    - numpy
+    - cython >=3.0.4,<3.1
+    - numpy >=2.0.0rc1,<2.3
+    - meson-python >=0.15.0
   run:
     - python
-    - {{ pin_compatible('numpy') }}
+    - numpy >=1.22.4,<3
 
 test:
   requires:
     - pytest
+    - pip
   imports:
     - pywt
   commands:
+    - pip check
     {% set label = "'full'" %}
     {% set tests = "['pywt']" %}
     - python -c "import sys; import pywt; sys.exit(not pywt.test(verbose=2, label={{ label }}, tests={{ tests }}, extra_argv=['--durations=50']))"
