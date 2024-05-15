@@ -19,7 +19,7 @@ build:
     - {{ PYTHON }} -m mesonbuild.mesonmain setup $MESON_ARGS builddir  # [not win]
     - {{ PYTHON }} -m mesonbuild.mesonmain setup %MESON_ARGS% builddir  # [win]
     - {{ PYTHON }} -m build --wheel --no-isolation --skip-dependency-check -Cbuilddir=builddir
-    - {{ PYTHON }} -m pip install dist/*.whl
+    - cd dist && {{ PYTHON }} -m pip install *.whl && cd ..
 
 requirements:
   build:
@@ -27,6 +27,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython >=3.0.4,<3.1                    # [build_platform != target_platform]
     - numpy >=2.0.0rc1,<2.3                  # [build_platform != target_platform]
+    - ninja                                  # [unix]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
   host:
