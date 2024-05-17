@@ -19,7 +19,8 @@ build:
     - {{ PYTHON }} -m mesonbuild.mesonmain setup $MESON_ARGS builddir  # [not win]
     - {{ PYTHON }} -m mesonbuild.mesonmain setup %MESON_ARGS% builddir  # [win]
     - {{ PYTHON }} -m build --wheel --no-isolation --skip-dependency-check -Cbuilddir=builddir
-    - cd dist && {{ PYTHON }} -m pip install *.whl && cd ..
+    - {{ PYTHON }} -c "from glob import glob; import sys; sys.stdout.writelines(glob('dist/*.whl'))" > whls.txt
+    - {{ PYTHON }} -m pip install -r whls.txt
 
 requirements:
   build:
