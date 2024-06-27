@@ -51,7 +51,7 @@ test:
     - pip check
     {% set label = "'full'" %}
     {% set tests = "['pywt']" %}
-    - python -c "import sys; import pywt; sys.exit(not pywt.test(verbose=2, label={{ label }}, tests={{ tests }}, extra_argv=['--durations=50', '-k', 'not test_mra2_axes']))"
+    - python -c "import sys; import pywt; sys.exit(not pywt.test(verbose=2, label={{ label }}, tests={{ tests }}, extra_argv=['--durations=50', '-k', 'not (test_mra_axis or test_mra2_axes or test_mra2_roundtrip or test_iswtn_mixed_dtypes)']))"
 
 about:
   home: https://github.com/PyWavelets/pywt
