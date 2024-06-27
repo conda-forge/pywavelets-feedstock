@@ -16,8 +16,8 @@ build:
   skip: True  # [py<39]
   script:
     - mkdir builddir
-    - {{ PYTHON }} -m mesonbuild.mesonmain setup $MESON_ARGS builddir  # [not win]
-    - {{ PYTHON }} -m mesonbuild.mesonmain setup %MESON_ARGS% builddir  # [win]
+    - {{ PYTHON }} -m mesonbuild.mesonmain setup $MESON_ARGS --buildtype=release builddir  # [not win]
+    - {{ PYTHON }} -m mesonbuild.mesonmain setup %MESON_ARGS% --buildtype=release builddir  # [win]
     - {{ PYTHON }} -m build --wheel --no-isolation --skip-dependency-check -Cbuilddir=builddir
     - {{ PYTHON }} -c "from glob import glob; import sys; sys.stdout.writelines(glob('dist/*.whl'))" > whls.txt
     - {{ PYTHON }} -m pip install -r whls.txt
