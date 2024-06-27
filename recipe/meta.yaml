@@ -16,9 +16,9 @@ build:
   skip: True  # [py<39]
   script:
     - mkdir builddir
-    - {{ PYTHON }} -m mesonbuild.mesonmain setup $MESON_ARGS --buildtype=release builddir  # [not win]
-    - {{ PYTHON }} -m mesonbuild.mesonmain setup %MESON_ARGS% --buildtype=release builddir  # [win]
-    - {{ PYTHON }} -m build --wheel --no-isolation --skip-dependency-check
+    - {{ PYTHON }} -m mesonbuild.mesonmain setup $MESON_ARGS builddir  # [not win]
+    - {{ PYTHON }} -m mesonbuild.mesonmain setup %MESON_ARGS% builddir  # [win]
+    - {{ PYTHON }} -m build --wheel --no-isolation --skip-dependency-check -Cbuilddir=builddir
     - {{ PYTHON }} -m pip install --find-links dist pywavelets
 
 requirements:
