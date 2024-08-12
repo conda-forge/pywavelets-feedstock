@@ -1,7 +1,7 @@
 {% set label = "'full'" %}
 {% set tests = "['pywt']" %}
 {% set name = "pywavelets" %}
-{% set version = "1.6.0" %}
+{% set version = "1.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -9,11 +9,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ea027c70977122c5fc27b2510f0a0d9528f9c3df6ea3e4c577ca55fd00325a5b
+  sha256: b47250e5bb853e37db5db423bafc82847f4cde0ffdf7aebb06336a993bc174f6
 
 build:
   number: 0
-  skip: True  # [py<39]
+  skip: true  # [py<39]
   script:
     - mkdir builddir
     - {{ PYTHON }} -m mesonbuild.mesonmain setup $MESON_ARGS builddir   # [unix]
@@ -38,6 +38,7 @@ requirements:
     - numpy
     - meson-python >=0.15.0
   run:
+    - numpy >=1.23,<3
     - python
 
 test:
