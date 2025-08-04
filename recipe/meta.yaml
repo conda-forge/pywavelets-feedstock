@@ -1,7 +1,7 @@
 {% set label = "'full'" %}
 {% set tests = "['pywt']" %}
 {% set name = "pywavelets" %}
-{% set version = "1.8.0" %}
+{% set version = "1.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f3800245754840adc143cbc29534a1b8fc4b8cff6e9d403326bd52b7bb5c35aa
+  sha256: 148d12203377772bea452a59211d98649c8ee4a05eff019a9021853a36babdc8
 
 build:
   number: 0
@@ -38,7 +38,7 @@ requirements:
     - numpy
     - meson-python >=0.16.0
   run:
-    - numpy >=1.23,<3
+    - numpy >=1.25,<3
     - python
 
 test:
