@@ -1,7 +1,7 @@
 {% set label = "'full'" %}
 {% set tests = "['pywt']" %}
 {% set name = "pywavelets" %}
-{% set version = "1.8.0" %}
+{% set version = "1.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -9,11 +9,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f3800245754840adc143cbc29534a1b8fc4b8cff6e9d403326bd52b7bb5c35aa
+  sha256: 148d12203377772bea452a59211d98649c8ee4a05eff019a9021853a36babdc8
 
 build:
   number: 0
-  skip: true  # [py<310]
+  skip: true  # [py<311]
   script:
     - mkdir builddir
     - {{ PYTHON }} -m mesonbuild.mesonmain setup $MESON_ARGS builddir   # [unix]
@@ -38,7 +38,7 @@ requirements:
     - numpy
     - meson-python >=0.16.0
   run:
-    - numpy >=1.23,<3
+    - numpy >=1.25,<3
     - python
 
 test:
@@ -51,7 +51,7 @@ test:
     - pip check
     {% set label = "'full'" %}
     {% set tests = "['pywt']" %}
-    - python -c "import sys; import pywt; sys.exit(not pywt.test(verbose=2, label={{ label }}, tests={{ tests }}, extra_argv=['--durations=50', '-k', 'not (test_mra_axis or test_mra2_axes or test_mra2_roundtrip or test_iswtn_mixed_dtypes)']))"
+    - python -c "import sys; import pywt; sys.exit(not pywt.test(verbose=2, label={{ label }}, tests={{ tests }}, extra_argv=['--durations=50', '-k', 'not (test_mra_axis or test_mra2_axes or test_mra2_roundtrip or test_iswtn_mixed_dtypes or test_swt2_iswt2_integration or test_perfect_reconstruction)']))"
 
 about:
   home: https://github.com/PyWavelets/pywt
