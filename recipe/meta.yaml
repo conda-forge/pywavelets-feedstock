@@ -12,7 +12,7 @@ source:
   sha256: 148d12203377772bea452a59211d98649c8ee4a05eff019a9021853a36babdc8
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<311]
   script:
     - mkdir builddir
